@@ -1,0 +1,37 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+/* Storing the workshop done & pizza eaten by head data in a 2D-array 
+   & when a[0][i] & a[1][i] both are 1 , increasing the value of initial money by x,
+   when a[0][i]==0 & a[1][i]==1 , then it is unsuccessful , so decreasing 
+   the value of initial money by y , comparing initial & final amount 
+   (storing initial money amount in s)
+*/
+
+int main() {
+    int n,r,x,y,i,a[2][1000000],s;
+    cin>>n>>r>>x>>y;
+    s=r;
+    for(i=0;i<n;i++)
+        cin>>a[0][i];
+    for(i=0;i<n;i++)
+        cin>>a[1][i];
+    for(i=0;i<n;i++){
+        if(a[0][i]==1&&a[1][i]==1)
+            r+=x;
+        else if(a[0][i]==1&&a[1][i]==0)
+            r-=y;
+    }
+    if(r>s)
+        cout<<"promoted";
+    else if(r<s)
+        cout<<"demoted";
+    else
+        cout<<"no change";
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    return 0;
+}
