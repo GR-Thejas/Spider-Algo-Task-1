@@ -1,0 +1,44 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+/* Making a function for checking whether
+   1st half of string is equal to 2nd half ,
+   then making it recursive in main by halving n
+   everytime till n isn't equal to 1, incrementing k 
+   everytime when condtion is satisfied 
+*/
+int solve(char s[],int n){
+    int i,v;
+    for(i=0;i<n/2;i++){
+        if(s[i]==s[i+n/2])
+            v=1;
+        else{
+            v=0;
+            break;
+        }
+    }
+    if(v)
+        return 1;
+    else
+        return 0;
+}
+
+int main() {
+    int n,k=0;
+    char s[1000000];
+    cin>>n>>s;
+    while(n!=1){
+        if(solve(s,n)){
+            k++;
+            n/=2;
+        }
+        else
+            break;
+    }
+    cout<<k;
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+    return 0;
+}
